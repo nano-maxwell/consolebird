@@ -23,11 +23,11 @@ public class Post {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d yyyy, h:mm a");
         String timeStr = timestamp.format(formatter);
         
-        return "\"" + title + "\" by " + authorUsername + 
+        return "\n" + title + " by " + authorUsername + 
         "\n" + content +
-        "\n[+] " + upvotes + " | [-] " + downvotes + " | " + timeStr + "\n";
+        "\n[+] " + upvotes + " | [-] " + downvotes + " | " + timeStr;
     }
 
     public void upvote(){ upvotes++; }
-    public void downvotes(){ downvotes++; }
+    public void downvote(){ downvotes++; }
 }
