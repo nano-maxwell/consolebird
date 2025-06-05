@@ -52,7 +52,7 @@ class BirdApp {
 
             switch (loggedInChoice) {
                 case 1:
-                    postService.createPost(sc, authService.getCurrentUser().getUsername());
+                    postService.createPost(sc, authService.getCurrentUser());
                     break;
                 case 2:
                     postService.viewPosts(sc);
