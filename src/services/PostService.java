@@ -25,7 +25,8 @@ public class PostService {
 
     public void viewPosts(Scanner sc){
         if(posts.isEmpty()){
-            System.out.println("No posts yet...");
+            System.out.println("-------------------------------");
+            System.out.println("\nNo posts yet...");
             return;
         }
 

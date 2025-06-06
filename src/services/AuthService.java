@@ -11,15 +11,33 @@ public class AuthService {
     
     public void signUp(Scanner sc) {
         System.out.println("Choose Your Username: ");
-        String username = sc.nextLine();
+        String username = sc.nextLine().strip().toLowerCase();
 
         if(users.containsKey(username)){
             System.out.println("Username already exists, please try again.");
+            signUp(sc);
+            return;
+        } else if (username.isBlank()){
+            System.out.println("Username must not be blank, please try again.");
+            signUp(sc);
+            return;
+        } else if (username.chars().anyMatch(Character::isWhitespace)){
+            System.out.println("Username must not contain any spaces, please try again.");
+            signUp(sc);
             return;
         }
 
         System.out.print("Enter password: ");
-        String password = sc.nextLine();
+        String password = sc.nextLine().strip();
+        if (password.isBlank()){
+            System.out.println("Password must not be blank, please try again.");
+            signUp(sc);
+            return;
+        } else if (password.chars().anyMatch(Character::isWhitespace)){
+            System.out.println("Password must not contain any spaces, please try again.");
+            signUp(sc);
+            return;
+        }
 
         User newUser = new User(username, password);
         users.put(username, newUser);
