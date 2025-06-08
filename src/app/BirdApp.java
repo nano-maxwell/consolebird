@@ -55,7 +55,7 @@ class BirdApp {
                     postService.createPost(sc, authService.getCurrentUser());
                     break;
                 case 2:
-                    postService.viewPosts(sc);
+                    postService.viewPosts(sc, authService.getCurrentUser());
                     break;
                 case 3:
                     authService.logOut();

@@ -1,7 +1,7 @@
 package models;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import utils.DateUtils;
 
 public class Comment {
     private User author;
@@ -20,15 +20,17 @@ public class Comment {
         this.parent = parent;
     }
 
-    public void upvote(){ upvotes++; }
-    public void downvote(){ downvotes++; }
+    public void upvote(){ this.upvotes++; }
+    public void downvote(){ this.downvotes++; }
 
     public String toString(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d yyyy, h:mm a");
-        String timeStr = timestamp.format(formatter);
         
-        return author.getUsername() + " - " + content + 
-        "\n[+] " + upvotes + " | [-] " + downvotes + " | " + timeStr;
+        return author.getUsername() + ": " + content + 
+        "\n[+] " + upvotes + " | " + DateUtils.timeSince(timestamp);
+    }
+
+    public int getNetUpvotes(){
+        return upvotes - downvotes;
     }
 
     public void delete(){
